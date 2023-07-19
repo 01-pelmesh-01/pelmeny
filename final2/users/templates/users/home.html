@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    <meta charset="utf-8">
+    <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+</head>
+<body>
+    <main>
+        <h1 align="center">HOME PAGE</h1>
+        <h3 align="center"><a href="admin">ADMIN</a></h3>
+        {% if user.is_authenticated %}      
+        <p>Hi {{ user.username }}!</p>
+        <a href="{% url 'edit' %}">edit</a>
+        <br />
+        <a href="{% url 'new_post'  %}">new_post</a>
+        <br />
+        <a href="{% url 'lenta' %}">lenta</a>
+        <br />
+        <p><a href="{% url 'logout' %}">Log Out</a></p> 
+        <br />
+        <b><p><a href="{% url 'premium' %}">premium</a></p></b>
+        {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'Login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+        {% endif %}
+    </main>
+
+<button type="submit" id="my_button" name="my_button" class="my_button" content="{{ csrf_token }}">please</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $("#my_button").click(function() {
+        $.ajax({
+            url: '/',
+            type: 'GET',
+            dataType: 'json',
+             data: {
+            "result": 1 ,
+            },
+            success: function(data) {
+                // Обработка полученных данных
+                alert(data.ur + ' is ' + data.age + ' years old.');
+                
+$.get(data.ur, {"result_2": "2" , '_token': $('meta[name="my_button"]').attr('content'),},).done(function(data){
+    alert("Авторизация завершена" + data);
+});
+
+            }
+        });
+    });
+});
+</script>
+    <style>
+        body {
+            background-color: black
+        }
+
+        a {
+            color: red
+        }
+
+        h1 {
+            color: ghostwhite
+        }
+        p {
+            color: ghostwhite
+        }
+    </style>
+</body>
+</html>

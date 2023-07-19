@@ -1,0 +1,48 @@
+django~=2.2
+    ApA!sPtpYt2Reem
+{% for el in story %}
+       <div>
+           <p>{{el.name}}</p>  
+           <p>{{el.desc}}</p>
+           <p>{{el.id}}</p>
+            <div>
+
+            <form method="post" name="to_like">
+            {% csrf_token %}
+            <button name="to_like" value="{{el.id}}" type="submit">like</button>
+            </form>
+            </div>
+        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+       </div>
+    {%endfor%}
+
+
+
+
+
+    ВАРИАНТЫ:
+
+    ЮКАССА
+    РОБОКАССА 
+    ВЕБМОНИ hRX7vpm9
+    На всяк случай :
+
+
+<div id='wm-widget' style='width: 305px;height: 183px;'></div>
+<script type='text/javascript' src='https://merchant.webmoney.ru/conf/lib/widgets/wmApp.js?v=1.6'></script>
+
+<script type='text/javascript'>
+window.webmoney.widgets().PWYW.create(
+    {
+        "lang": "ru",
+        "data": {
+            "paymentType": "wm",
+            "amount": 500,
+            "amountReadonly": true,
+            "purse": "Z243495688349",
+            "desc": "Тестовый товар",
+            "dop_chek": 1
+        },
+        "style": { "title": "", "titleNum": 1 }
+    }).on('paymentComplete', function (data) {/* your code */ }).mount('wm-widget')
+</script>
